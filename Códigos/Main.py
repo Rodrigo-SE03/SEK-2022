@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 from Bot import Bot
 
+from time import sleep
+from math import pi
+
 if __name__== '__main__':
+    print("here")
     bot = Bot()
 
     while True:
