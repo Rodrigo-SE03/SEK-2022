@@ -5,9 +5,8 @@ from time import sleep
 from math import pi
 
 if __name__== '__main__':
-    print("here")
     bot = Bot()
-
+    
     while True:
         bot.mover.frente()
         sleep(2)
