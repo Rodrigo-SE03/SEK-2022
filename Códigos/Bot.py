@@ -14,9 +14,9 @@ class Movimentos():
         distancia_dos_motores = 12.5
         raio_engrenagem = 2.5
         distancia_entre_rodas = 18
-        raio_das_rodas = 4.5
+        raio_das_rodas = 1.75
         self.giro_graus = (distancia_entre_rodas*pi)/(2*pi*raio_das_rodas)
-    
+
     def girar(self,graus,vel=vel_padrao):
         dir = 1
         if graus<0:
