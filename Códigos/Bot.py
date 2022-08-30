@@ -13,14 +13,14 @@ class Movimentos():
 
         distancia_dos_motores = 12.5
         raio_engrenagem = 2.5
-        distancia_entre_rodas = 18
-        raio_das_rodas = 1.75
+        distancia_entre_rodas = 19
+        raio_das_rodas = 3
         self.giro_graus = (distancia_entre_rodas*pi)/(2*pi*raio_das_rodas)
-
+    
     def girar(self,graus,vel=vel_padrao):
-        dir = 1
+        dir = 1 #sentido anti-horario
         if graus<0:
-            dir = -1
+            dir = -1 #sentido horario
             graus = -graus
         self.steering_pair.on_for_degrees(100*dir,vel,graus*self.giro_graus)
         self.steering_pair.off()
@@ -34,7 +34,7 @@ class Bot():
         self.cor_esq = ColorSensor(INPUT_2)
         self.cor_dir = ColorSensor(INPUT_3)
 
-        #self.ultsnc_lado = UltrasonicSensor(INPUT_1)
-        #self.ultsnc_frente = UltrasonicSensor(INPUT_4)
+        #self.ultsnc_lado = UltrasonicSensor(INPUT_4)
+        self.ultsnc_frente = UltrasonicSensor(INPUT_1)
 
         self.mover = Movimentos()
