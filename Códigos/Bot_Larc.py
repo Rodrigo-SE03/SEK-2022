@@ -13,7 +13,7 @@ class Movimentos():
 
         distancia_dos_motores = 12.5
         raio_engrenagem = 2.5
-        distancia_entre_rodas = 25
+        distancia_entre_rodas = 24
         raio_das_rodas = 1.75
         self.giro_graus = (distancia_entre_rodas*pi)/(2*pi*raio_das_rodas)
     
@@ -28,14 +28,29 @@ class Movimentos():
     def frente(self,vel=vel_padrao): self.steering_pair.on(0,vel)
     def tras(self,vel=vel_padrao): self.steering_pair.on(0,-vel)
     def parar(self): self.steering_pair.off()
+    def distancia(self,vel=vel_padrao,dist=10):
+        dist = dist+1
+        graus = dist*35
+        self.steering_pair.on_for_degrees(0,vel,graus)
+        
 
 class Garra():
     vel_padrao = 10
     def __init__(self):
         self.motor = MediumMotor(OUTPUT_C)
     
-    def subir(self, vel = vel_padrao): self.motor.on_for_degrees(vel, 180)
-    def descer(self, vel = vel_padrao): self.motor.on_for_degrees(-vel, 180)
+    def subir(self, vel = vel_padrao): 
+        self.motor.on(vel) 
+        while True:
+            sleep(0.1)
+            if 'overloaded' in self.motor.state:  break
+        self.motor.off
+    def descer(self, vel = vel_padrao): 
+        self.motor.on(-vel) 
+        while True:
+            sleep(0.1)
+            if 'overloaded' in self.motor.state:  break
+        self.motor.off
 
 class Bot():
     def __init__(self):
@@ -47,3 +62,4 @@ class Bot():
 
         self.mover = Movimentos()
         self.garra = Garra()
+        self.garra.descer()

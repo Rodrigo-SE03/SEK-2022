@@ -35,27 +35,25 @@ def re_vazio(bot):
 
 if __name__== '__main__':
     bot = Bot()
+    
     print('here')
+    sleep(2)
+    dist = bot.ultsnc_frente.distance_centimeters
+    bot.mover.girar (180,20)
+    bot.mover.distancia(-20,dist)
+    sleep(2)
+    bot.garra.subir()
+    sleep(2)
+    '''
     alinhar(bot)
     bot.mover.tras()
     sleep(4)
     bot.mover.girar(90)
-
-
-'''
+    '''
+    '''
     while True:
         bot.garra.subir()
         sleep(2)
         bot.garra.descer()
         sleep(2)
-
-
-    while True:
-        bot.mover.girar(90)
-        sleep(2)
-        bot.mover.girar(-180)
-        sleep(2)
-        bot.mover.girar(90)
-        sleep(2)
-        bot.mover.parar()
-'''
+    '''
