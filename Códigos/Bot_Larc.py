@@ -13,7 +13,7 @@ class Movimentos():
 
         distancia_dos_motores = 12.5
         raio_engrenagem = 2.5
-        distancia_entre_rodas = 24
+        distancia_entre_rodas = 25
         raio_das_rodas = 1.75
         self.giro_graus = (distancia_entre_rodas*pi)/(2*pi*raio_das_rodas)
     
@@ -28,7 +28,7 @@ class Movimentos():
     def frente(self,vel=vel_padrao): self.steering_pair.on(0,vel)
     def tras(self,vel=vel_padrao): self.steering_pair.on(0,-vel)
     def parar(self): self.steering_pair.off()
-    def distancia(self,vel=vel_padrao,dist=10):
+    def distancia(self,dist,vel=vel_padrao):
         dist = dist+1
         graus = dist*35
         self.steering_pair.on_for_degrees(0,vel,graus)
@@ -57,9 +57,15 @@ class Bot():
         self.cor_esq = ColorSensor(INPUT_2)
         self.cor_dir = ColorSensor(INPUT_3)
 
-        #self.ultsnc_lado = UltrasonicSensor(INPUT_4)
+        self.ultsnc_lado = UltrasonicSensor(INPUT_4)
         self.ultsnc_frente = UltrasonicSensor(INPUT_1)
 
         self.mover = Movimentos()
         self.garra = Garra()
         self.garra.descer()
+    
+    def mede_dist(self,sensor):
+        if sensor == 'f':
+            return self.ultsnc_frente.distance_centimeters
+        else:
+            return self.ultsnc_lado.distance_centimeters
