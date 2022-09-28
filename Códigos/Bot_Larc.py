@@ -99,3 +99,9 @@ def re_vazio(bot):
         elif bot.cor_esq.color == 0: return 1
         else: 
             return 0
+
+if __name__== '__main__':
+    bot = Bot()
+    bot.mover.tras()
+    sleep(4)
+    bot.mover.girar(90)
