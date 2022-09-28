@@ -36,6 +36,5 @@ def re_vazio(bot):
 if __name__== '__main__':
     bot = Bot()
     Buscar.segue_linha(bot)
-
     
     
