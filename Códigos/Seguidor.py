@@ -1,17 +1,14 @@
-from Bot_Larc import Bot
-from time import sleep, time
-
-
 class colorPID:
 
     reflected_target = 60
     power = 15
-    kp = 1.5; ki = 0.02; kd = 0.5
+    kp = 1; ki = 0.0; kd = 0
 
-    def __init__(self, sensor):
+    def __init__(self, sensor,vel = 30):
         self.sensor = sensor
         self.integral = 0
         self.last_error = 0
+        self.power = vel
     
     def get_error(self): return self.reflected_target - self.sensor.reflected_light_intensity
 
@@ -33,4 +30,3 @@ class colorPID:
     def reset(self):
         self.integral = 0
         self.last_error = 0
-
